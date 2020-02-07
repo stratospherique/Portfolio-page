@@ -2,15 +2,16 @@ import React from 'react';
 import IntroPanel from './IntroPanel';
 import InfoPanel from './InfoPanel';
 import '../assets/css/reset.css';
+import { MainContainer } from './styled-components/containers';
 
 const App = () => (
-  <div>
+  <MainContainer>
     {
       //the container
     }
     <IntroPanel />
     <InfoPanel />
-  </div>
+  </MainContainer>
 )
 
 export default App;
