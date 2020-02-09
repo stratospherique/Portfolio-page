@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ProjectsList from './ProjectsList';
 import ContactAnimated from './ContactAnimated';
+import { InfoContainer } from './styled-components/containers';
 
 const InfoPanel = ({ triggerPrev, triggerNext }) => (
-  <div>
-    <button onClick={triggerPrev}>previous</button>
-    <button onClick={triggerNext}>Next</button>
+  <InfoContainer>
+    <button className="prev" onClick={triggerPrev}>previous</button>
+    <button className="next" onClick={triggerNext}>Next</button>
     <ProjectsList />
-    <ContactAnimated />
-  </div>
+  </InfoContainer>
 )
 
 const mapDispatchToProps = (dispatch) => ({

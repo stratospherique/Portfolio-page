@@ -1,7 +1,9 @@
 import React from 'react';
+import { SlideContainer } from './styled-components/containers';
+
 
 const ProjectSlide = ({ project }) => (
-  <div>
+  <SlideContainer>
     <h2>{project.title}</h2>
     <div><img src={project.previews[0]} alt='img' /></div>
     <div>{project.description}</div>
@@ -12,7 +14,7 @@ const ProjectSlide = ({ project }) => (
       <button>Source Code</button>
       <button>Live Demo</button>
     </div>
-  </div>
+  </SlideContainer>
 )
 
 export default ProjectSlide;

@@ -1,7 +1,8 @@
 import React from 'react';
+import { IntroContainer } from './styled-components/containers';
 
 const IntroPanel = () => (
-  <div>
+  <IntroContainer>
     <h1>DESIGNER.
 THINKER.
 HUSBAND
@@ -13,8 +14,7 @@ HUSBAND
       <li>Github</li>
       <li>Gmail</li>
     </ul>
-    <span>Made by Ahmed ⓒ</span>
-  </div>
+  </IntroContainer>
 )
 
 export default IntroPanel;
