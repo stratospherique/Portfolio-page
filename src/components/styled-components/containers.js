@@ -4,16 +4,26 @@ const MainContainer = styledComponent.div`
   position: relative;
   background-color: gray;
   height: 100vh;
+  min-height: 600px;
+  min-width: 300px;
   display: grid;
   grid-template-areas: "left right";
   grid-template-columns: 35% 1fr;
   grid-template-rows: 1fr;   
 
-  @media screen and (max-width: 700px){
-    height: auto;
+  @media screen and (max-width: 700px and min-width: 301px){
+    height: 1000px;
     grid-template-areas: "left" 
                          "right";
-    grid-template-columns: 1fr;
+    grid-template-columns: auto;
+    grid-template-rows: 500px 500px;
+  }
+
+  @media screen and (max-width: 300px){
+    height: 100%; 
+    grid-template-areas: "left" 
+                         "right";
+    grid-template-columns: 300px;
     grid-template-rows: 500px 500px;
   }
 `;
@@ -22,8 +32,24 @@ const IntroContainer = styledComponent.div`
   border: 1px solid green;
   grid-area: left;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  & > .mantra {
+    width: 90%;
+    border: 1px solid;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+
+  }
+
+  & > .current {
+    border: 1px solid;
+    width: 90%;
+    text-align: justify;
+    margin-bottom: 4rem;
+  }
 `;
 
 const CopyRightsBanner = styledComponent.div`
@@ -38,7 +64,6 @@ const CopyRightsBanner = styledComponent.div`
 `;
 
 const InfoContainer = styledComponent.div`
-  border: 1px solid red;
   grid-area: right;
   display: flex;
   justify-content: center;
@@ -66,6 +91,13 @@ const SlideContainer = styledComponent.div`
   border: 1px solid yellow;
   width: 80%;
   height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 1s ease-in;
 `;
+
 
 export { MainContainer, IntroContainer, InfoContainer, CopyRightsBanner, SlideContainer }

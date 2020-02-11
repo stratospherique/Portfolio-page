@@ -12,8 +12,8 @@ const PROJECTS = [
     title: 'REMA',
     description: 'REMA is a full stack web app that enables the user to navigate through a wide variety of Real Estates via nice and easy to use responsive interface.',
     previews: [
+      webLinkOne,
       mobileLinkOne,
-      webLinkOne
     ],
     technologies: [
       'html',
