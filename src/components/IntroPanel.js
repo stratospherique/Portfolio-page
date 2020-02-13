@@ -8,7 +8,7 @@ const IntroPanel = () => (
     <h1 className="mantra">Developper.
 Critical Thinker.
 Coding Enthuthiast.</h1>
-    <p className="current">Currently Currently working as a Part-Time Technical Support Engineer @Microverse conducting Code Reviews. Open for Full stack web developing positions. Follow my work, words and photos below.</p>
+    <p className="current">Currently Currently working as a Part-Time Technical Support Engineer <b style={{ fontWeight: 900 }}>@Microverse</b> conducting Code Reviews. Open to Full stack web developing positions. Follow my work, words and photos below.</p>
     <SocialLinks>
       <a href="https://twitter.com/AhmedMahfoudh8" target="_blank"><img src={links.twitterIco} /></a>
       <a href="https://www.linkedin.com/in/ahmed-mahfoudh-6414b6121/" target="_blank"><img src={links.linkedIco} /></a>
