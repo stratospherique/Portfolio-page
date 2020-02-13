@@ -1,6 +1,9 @@
 import React from 'react';
 import { SlideContainer } from './styled-components/containers';
 import { PreviewImages } from './styled-components/styledParts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 class ProjectSlide extends React.Component {
 
@@ -25,9 +28,10 @@ class ProjectSlide extends React.Component {
   }
 
   render() {
-    const { project, styleClass } = this.props;
+    const { project, styleClass, theIndex } = this.props;
+    console.log(theIndex)
     return (
-      <SlideContainer isActive={styleClass} >
+      <SlideContainer isActive={styleClass} indice={theIndex} >
         <h2 className="title">{project.title}</h2>
         <PreviewImages>
           <div className="images">
@@ -47,8 +51,8 @@ class ProjectSlide extends React.Component {
           {project.technologies.map((tech) => <span key={tech}>{tech}</span>)}
         </div>
         <div className="buttons">
-          <button>Source Code</button>
-          <button>Live Demo</button>
+          <a href={project.repoLink} target="_blank">Source Code <FontAwesomeIcon icon={faExternalLinkAlt} /></a>
+          <a href={project.demoLink} target="_blank">Live Demo<FontAwesomeIcon icon={faGithub} /></a>
         </div>
       </SlideContainer>
     )
