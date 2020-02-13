@@ -93,6 +93,7 @@ const InfoContainer = styledComponent.div`
     left: 4%;
     @media screen and (max-width: 700px){
       left: 1%;
+      top: 30%;
     }
   }
 
@@ -102,6 +103,7 @@ const InfoContainer = styledComponent.div`
     right: 4%;
     @media screen and (max-width: 700px){
       right: 1%;
+      top: 30%;
     }
   }
 
