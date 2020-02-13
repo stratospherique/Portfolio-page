@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProjectsList from './ProjectsList';
-import ContactAnimated from './ContactAnimated';
+import { NavArrow } from './styled-components/styledParts';
 import { InfoContainer } from './styled-components/containers';
 
 const InfoPanel = ({ triggerPrev, triggerNext }) => (
   <InfoContainer>
-    <button className="prev" onClick={triggerPrev}>previous</button>
-    <button className="next" onClick={triggerNext}>Next</button>
+    <span className="prev" onClick={triggerPrev}>◄</span>
+    <span className="next" onClick={triggerNext}>►</span>
     <ProjectsList />
   </InfoContainer>
 )

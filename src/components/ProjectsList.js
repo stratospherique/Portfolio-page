@@ -75,7 +75,11 @@ const PROJECTS = [
 ]
 
 const ProjectsList = ({ currentIndex }) => (
-  <ProjectSlide project={PROJECTS[currentIndex]} />
+  <div className="slide-container">
+    <div className="wrapper" style={{ transform: `translateX(${currentIndex * -25}%)` }}>
+      {PROJECTS.map((project, index) => <ProjectSlide project={project} key={index} styleClass={index != currentIndex ? false : true} />)}
+    </div>
+  </div>
 )
 
 const mapStateToProps = (state) => ({

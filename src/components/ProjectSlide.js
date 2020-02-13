@@ -25,10 +25,10 @@ class ProjectSlide extends React.Component {
   }
 
   render() {
-    const { project } = this.props;
+    const { project, styleClass } = this.props;
     return (
-      <SlideContainer>
-        <h2>{project.title}</h2>
+      <SlideContainer isActive={styleClass} >
+        <h2 className="title">{project.title}</h2>
         <PreviewImages>
           <div className="images">
             <div>
@@ -42,11 +42,11 @@ class ProjectSlide extends React.Component {
               <span className="active">Web</span>
             </div>}
         </PreviewImages>
-        <div>{project.description}</div>
-        <div>
+        <div className="description">{project.description}</div>
+        <div className="technologies">
           {project.technologies.map((tech) => <span key={tech}>{tech}</span>)}
         </div>
-        <div>
+        <div className="buttons">
           <button>Source Code</button>
           <button>Live Demo</button>
         </div>
@@ -54,30 +54,5 @@ class ProjectSlide extends React.Component {
     )
   }
 }
-/*
-const ProjectSlide = ({ project }) => (
-  <SlideContainer>
-    <h2>{project.title}</h2>
-    <PreviewImages>
-      <div className="images">
-        {project.previews.map((pic) => <img src={pic} key={pic} />)}
-      </div>
-      {project.previews.length > 1 ? <div className="anim-btn">
-        <span>Web</span>
-        <span>Mobile</span>
-      </div> : <div className="anim-btn">
-          <span>Web</span>
-        </div>}
-    </PreviewImages>
-    <div>{project.description}</div>
-    <div>
-      {project.technologies.map((tech) => <span key={tech}>{tech}</span>)}
-    </div>
-    <div>
-      <button>Source Code</button>
-      <button>Live Demo</button>
-    </div>
-  </SlideContainer>
-)
-*/
+
 export default ProjectSlide;

@@ -14,13 +14,14 @@ const SocialLinks = styledComponent.div`
 
 const PreviewImages = styledComponent.div`
   border: 1px solid;
-  width: 80%;
-  height: 20rem;
-  margin: 2rem 0;
+  width: 100%;
+  height: 60%;
+  margin: .5rem 0 2% 0;
   position: relative;
 
   .images {
     width: 100%;
+    height: 100%;
     overflow: hidden;
     display: flex;
     flex-wrap: none;
@@ -32,7 +33,7 @@ const PreviewImages = styledComponent.div`
       
       & img {
         width: 100%;
-        height: 20rem;
+        height: 100%;
       }
     }
   }
@@ -73,4 +74,20 @@ const PreviewImages = styledComponent.div`
   }
 `;
 
-export { SocialLinks, PreviewImages }
+const NavArrow = styledComponent.span`
+  font-size: 3rem;
+  position: relative;
+  &::after {
+    content: '^';
+    position: absolute;
+    top: 1rem;
+    left: 0;
+  }
+  &::before {
+    content: '^';
+    position: absolute;
+    bottom: 0;
+  }
+`;
+
+export { SocialLinks, PreviewImages, NavArrow }
