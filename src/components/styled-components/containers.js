@@ -54,7 +54,7 @@ const CopyRightsBanner = styledComponent.div`
   width: 10rem;
   font-size: .8em;
   text-align: center;
-  right: calc(35% - 6rem);
+  right: calc(35% - 8rem);
   @media screen and (max-width: 700px){
     right: calc(50% - 5rem);
   }
@@ -111,7 +111,6 @@ const InfoContainer = styledComponent.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
-
     .wrapper {
       width: 400%;
       height: 100%;
@@ -128,72 +127,89 @@ const SlideContainer = styledComponent.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
   transition: opacity 2s ease;
   ${props => `background-color: ${palette.colorarray[props.indice]};`}
   ${props => props.isActive ? `
   opacity: 1;` : `
   opacity: 0;
-  `}
+  `};
+
 
   .title {
-  margin: 2% 0 0 0;
-  font-size: 2em;
-  color: ${palette.colorFive};
-}
+    position: absolute;
+    top: 6%;
+    @media screen and (max-width: 700px) {
+      top: 1%;
+    }
+    font-size: 2em;
+    color: ${palette.colorFive};
+  }
 
   .description {
-  text-align: justify;
-  line-height: 1.3rem;
-  width: 90%;
-  font-size: 1em;
-  color: ${palette.colorFive};
-  @media screen and(max-width: 300px) {
-    font-size: .8em;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    p {
+      text-align: justify;
+      line-height: 1.3rem;
+      width: 90%;
+      font-size: 1em;
+      color: ${palette.colorFive};
+      @media screen and(max-width: 300px) {
+        font-size: .8em;
+      }
+      transition: margin-top 1s ease;
+    }
+    
+    &:hover p{
+      margin-top: -10%;
+    }
   }
-}
 
   .technologies {
-  margin: 5% 0 0 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+    margin: 2.5% 0 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     
     & span {
-    padding: .3rem;
-    border: 1px solid;
-    margin: .5rem .5rem;
-    cursor: default;
-    font-size: .8em;
-    color: ${palette.colorTwo};
-    @media screen and(max-width: 300px) {
-      font-size: .6em;
-    }
-      &: hover {
-      background-color: ${palette.colorFour};
-      color: ${palette.colorThree};
+      padding: .3rem;
+      border: 1px solid;
+      margin: .2rem .5rem;
+      cursor: default;
+      font-size: .8em;
+      color: ${palette.colorTwo};
+      @media screen and(max-width: 300px) {
+        font-size: .6em;
+      }
+      &:hover {
+        background-color: ${palette.colorFour};
+        color: ${palette.colorThree};
+      }
     }
   }
-}
 
   .buttons {
-  margin: 6% 0;
-  width: 80%;
-  display: flex;
-  justify-content: space-around;
-
-    & a {
-    border: 1px solid ${palette.colorOne};
-    background-color: ${palette.colorTwo};
-    color: ${palette.colorOne};
-    border-radius: .2rem;
-    text-decoration: none;
-    height: 1.5rem;
-    width: 40%;
+    margin: 2% 0 6% 0;
+    width: 80%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: .7em;
-    transition: transform .8s ease;
+    justify-content: space-around;
+    & > a {
+      border: 1px solid ${palette.colorOne};
+      background-color: ${palette.colorTwo};
+      color: ${palette.colorOne};
+      border-radius: .2rem;
+      text-decoration: none;
+      height: 1.5rem;
+      width: 40%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7em;
+      transition: transform .8s ease;
 
       & svg {
       margin-left: 5%;
@@ -205,39 +221,10 @@ const SlideContainer = styledComponent.div`
         transform: translateX(1px) translateY(1px);
       }
     }
-
-    @media screen and(max-width: 300px) {
-      font-size: .5em;
-    }
   }
-}
-/*
-@keyframes slide {
-  0 % {
-    opacity: .3;
-    transform: rotate3d(0, 1, 0, 90deg) scaleX(0);
+  @media screen and(max-width: 300px) {
+    font-size: .5em;
   }
-
-  25 % {
-    opacity: .5;
-    transform: rotate3d(0, 1, 0, 90deg) ;
-  }
-
-  50 % {
-    opacity: .7;
-    transform: rotate3d(0, 1, 0, 90deg) ;
-  }
-
-  75 % {
-    opacity: .9;
-    transform: rotate3d(0, 1, 0, 90deg) ;
-  }
-
-  100 % {
-    opacity: 1;
-    transform: rotate3d(0, 1, 0, 90deg) scaleX(1);
-  }*/
-}
 `;
 
 

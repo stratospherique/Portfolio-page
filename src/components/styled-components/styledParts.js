@@ -31,17 +31,20 @@ const PreviewImages = styledComponent.div`
   .images {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     display: flex;
     flex-wrap: none;
 
     & div {
-      width: 200%;
+      
       display: flex;
+      height: 100%;
+      min-width: 200%;
+      overflow: hidden;
       transition: transform 0.5s ease;
       
       & img {
-        width: 100%;
+        width: 50%;
         height: 100%;
       }
     }
@@ -49,7 +52,7 @@ const PreviewImages = styledComponent.div`
 
   .mobile-view {
     & div {
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
   }
 

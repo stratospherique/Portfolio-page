@@ -5,7 +5,7 @@ import * as links from '../assets/assets';
 
 const IntroPanel = () => (
   <IntroContainer>
-    <h1 className="mantra">Developper.
+    <h1 className="mantra">Developer.
 Critical Thinker.
 Coding Enthuthiast.</h1>
     <p className="current">Currently Currently working as a Part-Time Technical Support Engineer <b style={{ fontWeight: 900 }}>@Microverse</b> conducting Code Reviews. Open to Full stack web developing positions. Follow my work, words and photos below.</p>

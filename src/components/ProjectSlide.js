@@ -46,13 +46,17 @@ class ProjectSlide extends React.Component {
               <span className="active">Web</span>
             </div>}
         </PreviewImages>
-        <div className="description">{project.description}</div>
+        <div className="description">
+          <p>
+            {project.description}
+          </p>
+        </div>
         <div className="technologies">
           {project.technologies.map((tech) => <span key={tech}>{tech}</span>)}
         </div>
         <div className="buttons">
-          <a href={project.repoLink} target="_blank">Source Code <FontAwesomeIcon icon={faExternalLinkAlt} /></a>
-          <a href={project.demoLink} target="_blank">Live Demo<FontAwesomeIcon icon={faGithub} /></a>
+          <a href={project.repoLink} target="_blank">Source Code <FontAwesomeIcon icon={faGithub} /></a>
+          <a href={project.demoLink} target="_blank">Live Demo<FontAwesomeIcon icon={faExternalLinkAlt} /></a>
         </div>
       </SlideContainer>
     )
