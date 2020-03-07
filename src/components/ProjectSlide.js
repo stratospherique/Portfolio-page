@@ -27,9 +27,16 @@ class ProjectSlide extends React.Component {
     document.querySelector('.images').classList.remove('web-view')
   }
 
+  handleDrag = (e) => {
+    // e.preventDefault();
+    if (document.innerWidth > 700) return;
+    e.persist();
+    const p = e.currentTarget;
+    p.scrollTop = p.scrollTop === 40 ? 0 : 40;
+  }
+
   render() {
     const { project, styleClass, theIndex } = this.props;
-    console.log(theIndex)
     return (
       <SlideContainer isActive={styleClass} indice={theIndex} >
         <h2 className="title">{project.title}</h2>
@@ -46,7 +53,7 @@ class ProjectSlide extends React.Component {
               <span className="active">Web</span>
             </div>}
         </PreviewImages>
-        <div className="description">
+        <div className="description" onTouchStart={this.handleDrag}>
           <p>
             {project.description}
           </p>

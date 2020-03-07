@@ -12,6 +12,14 @@ const MainContainer = styledComponent.div`
 
 
 
+  @media screen and (max-width: 1000px) and (min-width: 701px){
+    height: 1200px;
+    grid-template-areas: "left" 
+                         "right";
+    grid-template-columns: 1fr;
+    grid-template-rows: 500px 700px;
+  }
+
   @media screen and (max-width: 700px){
     height: 1000px;
     grid-template-areas: "left" 
@@ -55,7 +63,7 @@ const CopyRightsBanner = styledComponent.div`
   font-size: .8em;
   text-align: center;
   right: calc(35% - 8rem);
-  @media screen and (max-width: 700px){
+  @media screen and (max-width: 1000px){
     right: calc(50% - 5rem);
   }
 `;
@@ -134,13 +142,17 @@ const SlideContainer = styledComponent.div`
   opacity: 1;` : `
   opacity: 0;
   `};
+  position: relative;
 
 
   .title {
-    position: absolute;
-    top: 6%;
-    @media screen and (max-width: 700px) {
-      top: 1%;
+    @media screen and (max-width: 1000px) and (min-width: 701px){
+      position: absolute;
+      top: 20%;
+    }
+    @media screen and (max-width: 1000px) {
+      position: absolute;
+      top: 4%;
     }
     font-size: 2em;
     color: ${palette.colorFive};
@@ -151,6 +163,8 @@ const SlideContainer = styledComponent.div`
     overflow: hidden;
     display: flex;
     justify-content: center;
+    cursor: pointer;
+    scroll-behavior: smooth;
     p {
       text-align: justify;
       line-height: 1.3rem;
@@ -162,10 +176,13 @@ const SlideContainer = styledComponent.div`
       }
       transition: margin-top 1s ease;
     }
+
+  /*  @media screen and (max-width: 700px) {
+      &:hover p{
+        margin-top: -12%;
+      }
+    }*/
     
-    &:hover p{
-      margin-top: -10%;
-    }
   }
 
   .technologies {
@@ -180,7 +197,9 @@ const SlideContainer = styledComponent.div`
       margin: .2rem .5rem;
       cursor: default;
       font-size: .8em;
+      user-select: none;
       color: ${palette.colorTwo};
+
       @media screen and(max-width: 300px) {
         font-size: .6em;
       }
@@ -209,6 +228,7 @@ const SlideContainer = styledComponent.div`
       align-items: center;
       justify-content: center;
       font-size: .7em;
+      user-select: none;
       transition: transform .8s ease;
 
       & svg {
