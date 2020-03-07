@@ -14,17 +14,19 @@ class ProjectSlide extends React.Component {
   hanleWebClick = (e) => {
     this.setState({
       webView: true
-    })
-    document.querySelector('.images').classList.remove('mobile-view');
-    document.querySelector('.images').classList.add('web-view')
+    });
+    const imagesContainer = document.querySelectorAll('.images')[this.props.theIndex]
+    imagesContainer.classList.remove('mobile-view');
+    imagesContainer.classList.add('web-view')
   }
 
   hanleMobileClick = (e) => {
     this.setState({
       webView: false
     })
-    document.querySelector('.images').classList.add('mobile-view');
-    document.querySelector('.images').classList.remove('web-view')
+    const imagesContainer = document.querySelectorAll('.images')[this.props.theIndex]
+    imagesContainer.classList.add('mobile-view');
+    imagesContainer.classList.remove('web-view');
   }
 
   handleDrag = (e) => {

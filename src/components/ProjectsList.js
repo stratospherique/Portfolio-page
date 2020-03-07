@@ -6,6 +6,7 @@ import webLinkOne from '../assets/img/1-web.png';
 import webLinkTwo from '../assets/img/2-web.png';
 import webLinkThree from '../assets/img/3-web.png';
 import webLinkFour from '../assets/img/4-web.png';
+import mobileLinkFour from '../assets/img/4-mobile.png';
 
 const PROJECTS = [
   {
@@ -60,7 +61,8 @@ const PROJECTS = [
     title: 'Weather-App-JS',
     description: 'Weather app is a web app that enables the user to get weather related info about any city in the world from reliable sources (OpenWeather API).',
     previews: [
-      webLinkFour
+      webLinkFour,
+      mobileLinkFour,
     ],
     technologies: [
       'html',
