@@ -3,11 +3,13 @@
 
 # 💻 Portfolio
 
-<div align="center">
-<img src="mobile.png"/>
+<div align="center" >
+<img src="mobile.png" style="border: 4px double"/>
 </div>
 
-![alt text](web.png)
+<div align="center" >
+<img src="web.png" style="border: 4px double"/>
+</div>
 
 - Portfolio Page is a web app in which I present a collection of my best web projects.
 
