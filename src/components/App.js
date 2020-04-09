@@ -22,7 +22,7 @@ const App = () => {
       <IntroPanel className="left-panel" />
       <InfoPanel className="right-panel" />
       <CopyRightsBanner>
-        <span>Made by Ahmed ⓒ</span>
+        <span>ⓒ Made by Ahmed</span>
       </CopyRightsBanner>
     </MainContainer>
   )

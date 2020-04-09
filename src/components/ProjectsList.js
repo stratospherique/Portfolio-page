@@ -30,7 +30,7 @@ const PROJECTS = [
   },
   {
     title: 'REMA',
-    description: 'REMA is a full stack web app that enables the user to navigate through a wide variety of Real Estates via nice and easy to use responsive interface.',
+    description: 'REMA is a full stack web app that enables the user to navigate through a wide variety of real estate via nice and easy to use responsive interface.',
     previews: [
       webLinkOne,
       mobileLinkOne,
@@ -47,8 +47,8 @@ const PROJECTS = [
     demoLink: 'https://clever-hugle-f515ec.netlify.com/'
   },
   {
-    title: 'ODIN Facebook',
-    description: 'Odin Facebook is a mini blog that allows users to publish new posts about a variety of topics.',
+    title: 'ODIN Book',
+    description: 'Odin Book is a mini blog that allows users to publish new posts about a variety of topics.',
     previews: [
       webLinkTwo,
       mobileLinkTwo
