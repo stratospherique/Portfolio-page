@@ -9,7 +9,8 @@ const palette = {
     '#D7DED3',
     '#92BDDE',
     '#F6DF9C',
-    '#DC9CA3'
+    '#DC9CA3',
+    '#CBF7FF'
   ]
 }
 

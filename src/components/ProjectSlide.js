@@ -1,49 +1,63 @@
 import React, { useState } from 'react';
+import { useTransition } from 'react-spring';
 import { SlideContainer } from './styled-components/containers';
-import { PreviewImages } from './styled-components/styledParts';
+import { PreviewImages, BackPreview } from './styled-components/styledParts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-const ProjectSlide = props => {
 
-  const [isWebView, setWebView] = useState(true);
+const ProjectSlide = ({ project, theIndex, style }) => {
+
+  const [isWebView, setWebView] = useState(0);
 
   const hanleWebClick = (e) => {
-    setWebView(true);
-    const imagesContainer = document.querySelectorAll('.images')[props.theIndex]
+    setWebView(0);
+    /* const imagesContainer = document.querySelector('.images')
     imagesContainer.classList.remove('mobile-view');
-    imagesContainer.classList.add('web-view')
+    imagesContainer.classList.add('web-view') */
   }
 
   const hanleMobileClick = (e) => {
-    setWebView(false);
-    const imagesContainer = document.querySelectorAll('.images')[props.theIndex]
+    setWebView(1);
+    /* const imagesContainer = document.querySelector('.images')
     imagesContainer.classList.add('mobile-view');
-    imagesContainer.classList.remove('web-view');
+    imagesContainer.classList.remove('web-view'); */
   }
 
   const handleDrag = (e) => {
-    // e.preventDefault();
     if (document.innerWidth > 700) return;
     e.persist();
     const p = e.currentTarget;
     p.scrollTop = p.scrollTop === 40 ? 0 : 40;
   }
 
-  const { project, styleClass, theIndex } = props;
+  const previews = [
+    ({ style }) => <BackPreview style={style} url={project.previews[0]} />,
+    ({ style }) => <BackPreview style={style} url={project.previews[1]} />,
+  ]
+
+  const transitions = useTransition(isWebView, p => p, {
+    enter: { opacity: 1, transform: 'translate3d(0%, 0, 0)', width: '100%' },
+    from: { opacity: 0, transform: 'translate3d(-50%, 0, 0)', width: '0%' },
+    leave: { opacity: 0, transform: 'translate3d(50%, 0, 0)', width: '0%' },
+  })
+
   return (
-    <SlideContainer isActive={styleClass} indice={theIndex} >
+    <SlideContainer indice={theIndex} style={style} >
       <h2 className="title">{project.title}</h2>
       <PreviewImages>
         <div className="images">
-          <div>
-            {project.previews.map((pic) => <img src={pic} key={pic} />)}
-          </div>
+
+          {transitions.map(({ item, props, key }) => {
+            const Preview = previews[item];
+            return <Preview key={key} style={props} />
+          })}
+
         </div>
         {project.previews.length > 1 ? <div className="anim-btn">
-          <span onClick={hanleWebClick} className={isWebView ? 'active' : null}>Web</span>
-          <span onClick={hanleMobileClick} className={isWebView ? null : 'active'}>Mobile</span>
+          <span onClick={hanleWebClick} className={isWebView === 0 ? 'active' : null}>Web</span>
+          <span onClick={hanleMobileClick} className={isWebView === 0 ? null : 'active'}>Mobile</span>
         </div> : <div className="anim-btn">
             <span className="active">Web</span>
           </div>}
@@ -57,8 +71,8 @@ const ProjectSlide = props => {
         {project.technologies.map((tech) => <span key={tech}>{tech}</span>)}
       </div>
       <div className="buttons">
-        <a href={project.repoLink} target="_blank">Source Code <FontAwesomeIcon icon={faGithub} /></a>
-        <a href={project.demoLink} target="_blank">Live Demo<FontAwesomeIcon icon={faExternalLinkAlt} /></a>
+        <a href={project.repoLink} target="_blank" rel="noopener noreferrer">Source Code <FontAwesomeIcon icon={faGithub} /></a>
+        <a href={project.demoLink} target="_blank" rel="noopener noreferrer">Live Demo<FontAwesomeIcon icon={faExternalLinkAlt} /></a>
       </div>
     </SlideContainer>
   )
