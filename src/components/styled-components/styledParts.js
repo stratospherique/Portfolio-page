@@ -1,5 +1,6 @@
 import styledComponent from 'styled-components';
 import palette from './colors';
+import { animated } from 'react-spring';
 
 const SocialLinks = styledComponent.div`
   display: flex;
@@ -24,31 +25,26 @@ const SocialLinks = styledComponent.div`
 const PreviewImages = styledComponent.div`
   border-bottom: 1px solid ${palette.colorFour};
   width: 100%;
-  height: 60%;
+  height: 70%;
   margin: .5rem 0 2% 0;
   position: relative;
 
+  @media screen and (min-width: 700px) {
+    height: 60%;
+  }
+
   .images {
     width: 100%;
-    height: 100%;
+    height: 95%;
     overflow-x: hidden;
     display: flex;
     flex-wrap: none;
-
-    & div {
-      
-      display: flex;
+    justify-content: center;  
+    @media screen and (max-width: 1020px) {
       height: 100%;
-      min-width: 200%;
-      overflow: hidden;
-      transition: transform 0.5s ease;
-      
-      & img {
-        width: 50%;
-        height: 100%;
-      }
     }
   }
+  
 
   .mobile-view {
     & div {
@@ -90,20 +86,27 @@ const PreviewImages = styledComponent.div`
   }
 `;
 
-const NavArrow = styledComponent.span`
-  font-size: 3rem;
-  position: relative;
-  &::after {
-    content: '^';
-    position: absolute;
-    top: 1rem;
-    left: 0;
-  }
-  &::before {
-    content: '^';
-    position: absolute;
-    bottom: 0;
-  }
+const BackPreview = styledComponent(animated.div)`
+  ${props => `background: url(${props.url});`}
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 `;
 
-export { SocialLinks, PreviewImages, NavArrow }
+const NavArrow = styledComponent.span`
+font-size: 3rem;
+position: relative;
+  &::after {
+  content: '^';
+  position: absolute;
+  top: 1rem;
+  left: 0;
+}
+  &::before {
+  content: '^';
+  position: absolute;
+  bottom: 0;
+}
+`;
+
+export { SocialLinks, PreviewImages, NavArrow, BackPreview }

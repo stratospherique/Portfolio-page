@@ -1,14 +1,17 @@
-import styledComponent from 'styled-components';
+import styled from 'styled-components';
 import palette from './colors';
+import { animated } from 'react-spring';
 
-const MainContainer = styledComponent.div`
+const MainContainer = styled.div`
+  width: 100%;
+  height: 100%;
   position: relative;
-  
 	overflow: hidden;
   display: grid;
   grid-template-areas: "left right";
   grid-template-columns: 35% 1fr;
   grid-template-rows: 1fr;
+  min-height: 600px;
 
 
 
@@ -21,16 +24,16 @@ const MainContainer = styledComponent.div`
   }
 
   @media screen and (max-width: 700px){
-    height: 1000px;
+    height: 1200px;
     grid-template-areas: "left" 
                          "right";
     grid-template-columns: 1fr;
-    grid-template-rows: 500px 500px;
+    grid-template-rows: 500px 700px;
   }
 
 `;
 
-const IntroContainer = styledComponent.div`
+const IntroContainer = styled.div`
   background-color: white;
   grid-area: left;
   display: flex;
@@ -55,7 +58,7 @@ const IntroContainer = styledComponent.div`
   }
 `;
 
-const CopyRightsBanner = styledComponent.div`
+const CopyRightsBanner = styled.div`
   background-color: transparent;
   position: absolute;
   bottom: .5%;
@@ -68,7 +71,7 @@ const CopyRightsBanner = styledComponent.div`
   }
 `;
 
-const InfoContainer = styledComponent.div`
+const InfoContainer = styled.div`
   grid-area: right;
   display: flex;
   justify-content: center;
@@ -101,7 +104,7 @@ const InfoContainer = styledComponent.div`
     left: 4%;
     @media screen and (max-width: 700px){
       left: 1%;
-      top: 30%;
+      top: 40%;
     }
   }
 
@@ -111,7 +114,7 @@ const InfoContainer = styledComponent.div`
     right: 4%;
     @media screen and (max-width: 700px){
       right: 1%;
-      top: 30%;
+      top: 40%;
     }
   }
 
@@ -119,29 +122,21 @@ const InfoContainer = styledComponent.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
-    .wrapper {
-      width: 400%;
-      height: 100%;
-      display: flex;
-      transition: transform 1s ease-out;
-    }
+    
   }  
 `;
 
-const SlideContainer = styledComponent.div`
+const SlideContainer = styled(animated.div)`
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  will-change: opacity, transform;
   
-  transition: opacity 2s ease;
   ${props => `background-color: ${palette.colorarray[props.indice]};`}
-  ${props => props.isActive ? `
-  opacity: 1;` : `
-  opacity: 0;
-  `};
+  
   position: relative;
 
 

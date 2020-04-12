@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useTransition } from 'react-spring'
 import ProjectSlide from './ProjectSlide';
 import mobileLinkOne from '../assets/img/1mobile.png';
 import webLinkOne from '../assets/img/1-web.png';
@@ -13,11 +14,12 @@ import mobileLinkFive from '../assets/img/5-mobile.png';
 
 const PROJECTS = [
   {
+    _id: 0,
     title: 'Battleship Game',
     description: 'Battleship (also Battleships or Sea Battle) is a strategy type guessing game for two players. We implemented a web version of the app where the two players are the user and his bot opponent.',
     previews: [
-      webLinkThree,
-      mobileLinkThree
+      webLinkOne,
+      mobileLinkOne
     ],
     technologies: [
       'HTML',
@@ -29,11 +31,12 @@ const PROJECTS = [
     demoLink: 'https://stratospherique.github.io/battleship-js/'
   },
   {
+    _id: 1,
     title: 'REMA',
-    description: 'REMA is a full stack web app that enables the user to navigate through a wide variety of Real Estates via nice and easy to use responsive interface.',
+    description: 'REMA is a full stack web app that enables the user to navigate through a wide variety of real estate via nice and easy to use responsive interface.',
     previews: [
-      webLinkOne,
-      mobileLinkOne,
+      webLinkTwo,
+      mobileLinkTwo,
     ],
     technologies: [
       'HTML',
@@ -47,11 +50,12 @@ const PROJECTS = [
     demoLink: 'https://clever-hugle-f515ec.netlify.com/'
   },
   {
-    title: 'ODIN Facebook',
-    description: 'Odin Facebook is a mini blog that allows users to publish new posts about a variety of topics.',
+    _id: 2,
+    title: 'ODIN Book',
+    description: 'Odin Book is a mini blog that allows users to publish new posts about a variety of topics.',
     previews: [
-      webLinkTwo,
-      mobileLinkTwo
+      webLinkThree,
+      mobileLinkThree
     ],
     technologies: [
       'HTML',
@@ -63,6 +67,7 @@ const PROJECTS = [
     demoLink: 'https://desolate-badlands-67931.herokuapp.com/'
   },
   {
+    _id: 3,
     title: 'Weather-App-JS',
     description: 'Weather app is a web app that enables the user to get weather related info about any city in the world from reliable sources (OpenWeather API).',
     previews: [
@@ -79,11 +84,8 @@ const PROJECTS = [
     repoLink: 'https://github.com/stratospherique/Weather-App-JS/tree/development',
     demoLink: 'https://rawcdn.githack.com/stratospherique/Weather-App-JS/ef39618fc7a24fe22c79bb20a182d1814fc264c8/index.html'
   },
-
-]
-
-/* to be added React Animations
-{
+  {
+    _id: 4,
     title: 'Dashboard',
     description: 'Dashboard is a web app that mimics the behaviour and the look & feel of a dashboard along with validation-enabled forms.',
     previews: [
@@ -100,16 +102,29 @@ const PROJECTS = [
     repoLink: 'https://github.com/stratospherique/Dashboard',
     demoLink: 'https://proto-dashboard.netlify.com/'
   }
+]
+
+/* to be added React Animations
+
 */
 
-const ProjectsList = ({ currentIndex }) => {
+const slides = PROJECTS.map((pj, ind) => (({ style }) => <ProjectSlide project={pj} theIndex={ind} style={style} />))
+
+export default ({ currentIndex }) => {
+
+  const transitions = useTransition(currentIndex, p => p, {
+    from: { opacity: 0, transform: 'translate3d(0,100%,0)', height: '0%' },
+    enter: { opacity: 1, transform: 'translate3d(0,0%,0)', height: '100%' },
+    leave: { opacity: 0, transform: 'translate3d(0,-50%,0)', height: '0%' },
+  })
   return (
-    <div className="slide-container" >
-      <div className="wrapper" style={{ transform: `translateX(${currentIndex * -25}%)` }}>
-        {PROJECTS.map((project, index) => <ProjectSlide project={project} key={index} styleClass={index != currentIndex ? false : true} theIndex={index} />)}
-      </div>
+    <div className="slide-container">
+      {transitions.map(({ item, props, key }) => {
+        const Slide = slides[item]
+        return <Slide key={key} style={props} />
+      })}
     </div>
   )
 }
 
-export default ProjectsList;
+
