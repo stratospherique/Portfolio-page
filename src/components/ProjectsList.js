@@ -47,7 +47,7 @@ const PROJECTS = [
       'Rails API'
     ],
     repoLink: 'https://github.com/stratospherique/real-estate-app',
-    demoLink: 'https://clever-hugle-f515ec.netlify.com/'
+    demoLink: 'https://real-estate-mania.netlify.app/'
   },
   {
     _id: 2,
@@ -82,7 +82,7 @@ const PROJECTS = [
       'API'
     ],
     repoLink: 'https://github.com/stratospherique/Weather-App-JS/tree/development',
-    demoLink: 'https://rawcdn.githack.com/stratospherique/Weather-App-JS/ef39618fc7a24fe22c79bb20a182d1814fc264c8/index.html'
+    demoLink: 'https://stratospherique.github.io/Weather-App-JS/',
   },
   {
     _id: 4,
@@ -104,9 +104,6 @@ const PROJECTS = [
   }
 ]
 
-/* to be added React Animations
-
-*/
 
 const slides = PROJECTS.map((pj, ind) => (({ style }) => <ProjectSlide project={pj} theIndex={ind} style={style} />))
 
