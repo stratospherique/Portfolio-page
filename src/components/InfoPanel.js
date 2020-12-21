@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import { slidingReducer, NEXT_SLIDE, PREVIOUS_SLIDE } from '../context/slider-reducer';
 import ProjectsList from './ProjectsList';
-import { InfoContainer } from './styled-components/containers';
+import { InfoContainer } from './common/styled-components/containers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 

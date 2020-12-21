@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTransition } from 'react-spring';
-import { SlideContainer } from './styled-components/containers';
-import { PreviewImages, BackPreview } from './styled-components/styledParts';
+import { SlideContainer } from './common/styled-components/containers';
+import { PreviewImages, BackPreview } from './common/styled-components/styledParts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';

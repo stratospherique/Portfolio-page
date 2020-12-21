@@ -55,12 +55,8 @@ table {
 	box-sizing: border-box;
 }
 
-#root {
-	display: grid;
-	width: 100vw;
-	height: 100vh;
-	align-items: stretch;
-	justify-items: stretch;
+html {
+	scroll-behavior: smooth;
 }
 
 body {

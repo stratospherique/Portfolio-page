@@ -1,6 +1,6 @@
 import React from 'react';
-import { IntroContainer } from './styled-components/containers';
-import { SocialLinks } from './styled-components/styledParts';
+import { IntroContainer } from './common/styled-components/containers';
+import { SocialLinks } from './common/styled-components/styledParts';
 import * as links from '../assets/assets';
 
 const IntroPanel = () => (
