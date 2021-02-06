@@ -1,7 +1,52 @@
 import React from 'react';
+import styled from 'styled-components';
+import { theme } from '../../../helpers/constants';
 
-const NavigationLink = ({IdPath, text}) => (
-<a href={`#${IdPath}`}>{text}</a>
-);
+const StyledTab = styled.a`
+  padding: 1.2em;
+  color: ${props => props.isScrolled ? theme.colors.secondary : theme.colors.fourth};
+  font-weight: 400;
+  transition: color .5s ease;
+  &:hover,
+  &:active {
+    color: ${theme.colors.primary};
+    font-weight: 500;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: ${props => props.arrowEnabled ? 'space-between' : 'flex-start'};
+  cursor: pointer;
+  ${
+    props => props.arrowEnabled ?
+    `
+      &::after {
+        content: '>';
+        display: inline;
+      }
+    `: null
+}
+`;
+
+const NavigationLink = ({IdPath, text, handleClick, arrowEnabled, isScrolled}) => {
+  const handleLinkVisit = () => {
+    const targetSection = document.querySelector(`#${IdPath}`);
+    window.scrollTo({
+      top: targetSection.offsetTop,
+      behavior: 'smooth'
+    });
+    if (handleClick) {
+      handleClick();
+    }
+  };
+  return (
+    <StyledTab 
+      onPointerDown={handleLinkVisit}
+      arrowEnabled={arrowEnabled}
+      isScrolled={isScrolled}
+    >
+      {text}
+    </StyledTab>
+  );
+};
 
 export default NavigationLink;

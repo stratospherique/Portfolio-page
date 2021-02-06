@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const SectionHeadingContainer = styled.div`
   width: 100%;
@@ -19,5 +20,9 @@ const SectionHeading = ({ text }) => (
     </h2>
   </SectionHeadingContainer>
 );
+
+SectionHeading.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 
 export default SectionHeading;

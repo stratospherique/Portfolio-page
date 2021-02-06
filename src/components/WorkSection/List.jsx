@@ -1,17 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Item from './item';
 
-const ProjectsList = ({list}) => {
+const ProjectsList = ({ list }) => (
+  <div>
+    {
+      list.map((project, index) => (
+        <Item key={'project-'.concat(index)} project={project} projectIndex={index} />
+      ))
+    }
+  </div>
+);
 
-  return (
-    <div>
-      {
-        list.map(project => (
-          <Item project={project} />
-        ))
-      }
-    </div>
-  )
-}
+ProjectsList.propTypes = {
+  list: PropTypes.array.isRequired,
+};
 
 export default ProjectsList;

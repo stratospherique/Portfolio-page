@@ -1,25 +1,29 @@
 import React from 'react';
-import SectionHeading from 'components/common/SectionHeading';
-import Button from 'components/common/Button';
 import { SKILLS as skills } from 'helpers/constants';
+import styled from 'styled-components';
+import Section from './Section';
+
+const SkillsContainer = styled.div`
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+`;
+
+const SkillContainer = styled.div`
+  border: 1px solid;
+`;
 
 const Skills = () => (
-  <div>
+  <SkillsContainer>
     {
       Object.keys(skills).map(skill => (
-        <div key={skill}>
-          <h4>{skill}</h4>
-          <div>
-            {
-              skills[skill].map(lang => (
-                <span key="lang">{lang.name}</span>
-              ))
-            }
-          </div>
-        </div>
+        <SkillContainer key={skill}>
+          <Section skill={skill} skillsArray={skills[skill]} />
+        </SkillContainer>
       ))
     }
-  </div>
+  </SkillsContainer>
 );
 
 export default Skills;
