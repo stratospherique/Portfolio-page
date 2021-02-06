@@ -7,6 +7,7 @@ const Btn = ({className, children, style, action ,type}) => (
     className={className}
     style={{...style}}
     onClick={action}
+    onAuxClick={action}
     type={type}
   >
     {children}
@@ -14,7 +15,7 @@ const Btn = ({className, children, style, action ,type}) => (
 );
 
 const Button = ({text, type, size, Icon, action, style, padding, margin, color, bgColor}) => {
-  
+
   const C = styled(Btn)`
   display: flex;
   align-items: center;

@@ -23,7 +23,7 @@ const ContentContainer = styled.div`
       "desc"
       "techstack"
       "buttons";
-    grid-template-rows: 20rem 1fr auto auto auto 1fr;
+    grid-template-rows: auto 1fr auto auto auto 1fr;
     grid-template-columns: 1fr;`
     : `grid-template-areas: 
       "snapshot snapshot snapshot"
@@ -31,17 +31,15 @@ const ContentContainer = styled.div`
       "title . buttons"
       "techstack techstack ."
       "desc desc desc";
-    grid-template-rows: 40rem 1fr 1fr 5rem 1fr;
+    grid-template-rows: auto 1fr 1fr 5rem 1fr;
     grid-template-columns: 1fr 1fr 1fr;`
   )}
-  width: 90%;
+  width: 95%;
   max-width: 1400px;
   height: auto;
-  @media (max-height: 750px) {
-    margin-top: 14rem;
-  }
   min-height: 550px;
   position: relative;
+  
 
   .title {
     grid-area: title;
@@ -77,8 +75,20 @@ const ContentContainer = styled.div`
   }
 `;
 
-const Pic = styled.div`
-  height: 100%;
+const Screenshot = ({ className, link }) => (
+  <div className={className}>
+    <img src={link} style={{ visibility: 'hidden', width: '100%' }} alt="screenshot" />
+  </div>
+);
+
+Screenshot.propTypes = {
+  className: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+};
+
+const Pic = styled(Screenshot)`
+  height: auto;
+  max-height: ${props => (props.isMobileView ? '25rem' : '30rem')};
   width: 100%;
   grid-area: snapshot;
   ${props => (props.isMobileView
@@ -92,6 +102,9 @@ const Pic = styled.div`
   background-size: ${props => (props.isMobileView ? '100% 100%' : 'contain')};
   background-position: center;
   background-repeat: no-repeat;
+  & > img {
+    max-height: ${props => (props.isMobileView ? '25rem' : '30rem')};
+  }
 `;
 
 const Project = ({ project, onClose }) => {

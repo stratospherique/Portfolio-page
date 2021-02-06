@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
-import Typography from '../common/Typography';
+import Typography from 'components/common/Typography';
+import { theme } from 'helpers/constants';
 
 const SummaryContainer = styled.div`
   display: flex;
@@ -17,10 +18,16 @@ const Summary = () => (
       size="medium"
       type="title"
       color="primary"
+      style={{
+        backgroundColor: theme.colors.secondary,
+      }}
     />
     <Typography
-      text="I am goal-driven, detail-oriented, and proactive developer. I like building eye-catching, yet efficient web products. The Diamond in the logo stands for code robustness, quality, and coherence with the best practices. You need assistance in building a website or launching an online business, or you're on a talent hunt mission, don’t hesistate to contact me."
+      text="I am a goal-driven, detail-oriented, and proactive developer. I like building eye-catching, yet efficient web products. The Diamond in the logo stands for code robustness, quality, and coherence with the best practices. If you need assistance in building a website or launching an online business, or you're on a talent hunt mission, don’t hesistate to contact me."
       size="small"
+      style={{
+        backgroundColor: theme.colors.secondary,
+      }}
     />
     <Button
       text="Get my resume"

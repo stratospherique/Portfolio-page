@@ -12,7 +12,7 @@ const WorkSection = () => (
         type="title"
         color="tertiary"
         style={{
-          paddingLeft: '1rem',
+          textAlign: 'center',
         }}
       />
       <ProjectsList list={PROJECTS} />

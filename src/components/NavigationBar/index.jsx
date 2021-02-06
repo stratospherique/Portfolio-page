@@ -34,7 +34,7 @@ const NavigationBar = ({ dispatch }) => {
   const [isScrolled, setIsScrolled] = useState(window.scrollY > 100);
 
   const props = useSpring({
-    padding: isMobileView || isScrolled ? 10 : 20,
+    padding: isMobileView || isScrolled ? 7 : 14,
     borderColor: isMobileView || isScrolled ? theme.colors.primary : theme.colors.fourth,
     backgroundColor: isMobileView || isScrolled ? theme.colors.fourth : theme.colors.secondary,
   });
@@ -60,6 +60,7 @@ const NavigationBar = ({ dispatch }) => {
     window.addEventListener('scroll', debounce(handleScroll, 400));
 
     return () => window.removeEventListener('scroll', handleScroll);
+    // eslint-disable-next-line
   }, [isScrolled]);
 
   return (

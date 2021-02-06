@@ -25,7 +25,7 @@ const Contact = () => (
     <Typography
       style={{ textAlign: 'center' }}
       size="small"
-      text="If you have an application you are interested in developing, a feature that you need built or a project that need coding, I’d love to help you with it."
+      text="If you have an application you are interested in developing, a feature that you need built or a project that needs coding, I’d love to help you with it."
       color="secondary"
     />
     <ContactForm />

@@ -25,6 +25,7 @@ const useMediaQuery = query => {
           return false;
       }
     }));
+    // eslint-disable-next-line
   }, [width]);
 
   const handleResize = () => {
@@ -39,6 +40,7 @@ const useMediaQuery = query => {
 
   useEffect(() => {
     updateMatchState();
+    // eslint-disable-next-line
   }, [width]);
   return isMatch;
 };

@@ -15,7 +15,7 @@ const SectionContainer = styled.div`
   align-items: stretch;
   transition: height .5s ease-out;
   transform-origin: top;
-  height: ${props => (props.toggled ? 'auto' : '4rem')};
+  height: ${props => (props.toggled ? 'auto' : '3em')};
   overflow-y: hidden;
 
   *, *::after, *::before {
@@ -26,9 +26,10 @@ const SectionContainer = styled.div`
     outline: 1px solid;
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 1em;
     align-items: center;
-    height: 4rem;
+    height: 3em;
+    cursor: pointer;
     & > svg {
       color: ${theme.colors.primary};
       transition: color, .3s ease;
@@ -40,7 +41,6 @@ const SectionContainer = styled.div`
     }
   }
   .body {
-    outline: 1px solid;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -92,11 +92,10 @@ const Section = ({ skill, skillsArray }) => {
 
   return (
     <SectionContainer toggled={isToggled}>
-      <div className="head">
+      <div className="head" onPointerDown={handleToggle}>
         <Typography text={skill} size="small" />
         <FontAwesomeIcon
           icon={isToggled ? faChevronCircleUp : faChevronCircleRight}
-          onClick={handleToggle}
         />
       </div>
       <animated.div style={props}>

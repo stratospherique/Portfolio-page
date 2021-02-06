@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
 import TechStack from 'components/common/TechStack';
 import Typography from 'components/common/Typography';
 import { theme } from 'helpers/constants';
-import { useMediaQuery } from 'helpers/hooks';
 import PopUpDialog from 'components/common/PopUpDialog';
 import debounce from 'lodash/debounce';
 import { useSpring, animated } from 'react-spring';
 import Project from './Project';
+import useCurrentDevice from '../../hooks/useCurrentDevice';
 
 const ProjectContainer = animated(styled.article`
-  height: ${props => (props.isMobileView ? 'auto' : '25em')};
+  height: ${({ isMobileView, isTabletView }) => ((isMobileView || isTabletView) ? 'auto' : '18em')};
   width: 100%;
+  max-width: ${theme.breakpoints.lg}px;
   overflow: hidden;
-  margin: 1rem 0;
+  margin: 1rem auto;
   padding: 1rem;
   display: flex;
   flex-wrap: wrap;
@@ -86,10 +87,13 @@ function isInViewport(el) {
 }
 
 const Item = ({ project, projectIndex }) => {
-  const isMobileView = useMediaQuery(`max-width: ${theme.breakpoints.sm}`);
+  const {
+    isMobileView,
+    isTabletView,
+    isLargeView,
+  } = useCurrentDevice();
   const [isVisible, setIsVisible] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const rootElement = document.querySelector('body');
 
   const expand = useSpring({
     transformOrigin: 'left',
@@ -99,12 +103,10 @@ const Item = ({ project, projectIndex }) => {
   });
 
   const openPopup = () => {
-    rootElement.classList.add('stop-scrolling');
     setDialogOpen(true);
   };
 
   const closePopup = () => {
-    rootElement.classList.remove('stop-scrolling');
     setDialogOpen(false);
   };
 
@@ -118,11 +120,17 @@ const Item = ({ project, projectIndex }) => {
     window.addEventListener('scroll', debounce(handleScroll, 100));
 
     return () => window.removeEventListener('scroll', handleScroll);
+    // eslint-disable-next-line
   }, []);
 
   return (
     <>
-      <ProjectContainer id={'project-'.concat(projectIndex)} style={expand} isMobileView={isMobileView}>
+      <ProjectContainer
+        id={'project-'.concat(projectIndex)}
+        style={isLargeView ? expand : null}
+        isMobileView={isMobileView}
+        isTabletView={isTabletView}
+      >
         <ProjectImage isMobileView={isMobileView} link={project.mockView} />
         <ProjectInfoContainer isMobileView={isMobileView}>
           <div className="title">
@@ -176,4 +184,4 @@ Item.propTypes = {
   projectIndex: PropTypes.number.isRequired,
 };
 
-export default Item;
+export default memo(Item);

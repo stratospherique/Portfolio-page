@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../../helpers/constants';
 
 const StyledTab = styled.a`
-  padding: 1.2em;
-  color: ${props => props.isScrolled ? theme.colors.secondary : theme.colors.fourth};
+  padding: .8em;
+  color: ${props => (props.isScrolled ? theme.colors.secondary : theme.colors.fourth)};
   font-weight: 400;
+  font-size: ${({arrowEnabled}) => arrowEnabled ? '1em' : '.8em'};
+  margin-bottom: ${({arrowEnabled}) => arrowEnabled ? '2em' : 0};
   transition: color .5s ease;
   &:hover,
   &:active {
@@ -14,16 +16,17 @@ const StyledTab = styled.a`
   }
   display: flex;
   align-items: center;
-  justify-content: ${props => props.arrowEnabled ? 'space-between' : 'flex-start'};
+  justify-content: ${props => (props.arrowEnabled ? 'space-between' : 'flex-start')};
   cursor: pointer;
   ${
-    props => props.arrowEnabled ?
-    `
+  props => (props.arrowEnabled
+    ? `
       &::after {
         content: '>';
         display: inline;
       }
-    `: null
+    `
+    : null)
 }
 `;
 
@@ -31,7 +34,7 @@ const NavigationLink = ({IdPath, text, handleClick, arrowEnabled, isScrolled}) =
   const handleLinkVisit = () => {
     const targetSection = document.querySelector(`#${IdPath}`);
     window.scrollTo({
-      top: targetSection.offsetTop,
+      top: targetSection.offsetTop - 100,
       behavior: 'smooth'
     });
     if (handleClick) {
@@ -49,4 +52,4 @@ const NavigationLink = ({IdPath, text, handleClick, arrowEnabled, isScrolled}) =
   );
 };
 
-export default NavigationLink;
+export default memo(NavigationLink);

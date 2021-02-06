@@ -9,16 +9,18 @@ import '../assets/css/reset.css';
 import '../assets/css/app.scss';
 import { popUpReducer } from 'context/reducers';
 import BlurComponent from 'components/common/BlurLayer';
-
+// eslint-disable-next-line
 const trackingId = 'UA-158499655-1'; // Replace with your Google Analytics tracking ID
-
+// eslint-disable-next-line
 const initAnalytic = id => {
   ReactGA.initialize(id);
   ReactGA.pageview('/');
 };
 
 const App = () => {
-  // initAnalytic(trackingId);
+  if (process.env.NODE_ENV === 'production') {
+    initAnalytic(trackingId);
+  }
 
   const [popupActive, dispatch] = useReducer(popUpReducer, false);
 

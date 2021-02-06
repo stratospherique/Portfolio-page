@@ -191,9 +191,9 @@ export const theme = {
   typography: {
     fontSizes: {
       xs: '.75em',
-      medium: '1.5em',
-      large: '2em',
-      small: '1em',
+      medium: '1.3em',
+      large: '1.7em',
+      small: '.9em',
     },
     spacings: {
       small: '1rem',

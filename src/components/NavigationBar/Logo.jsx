@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import LogoPath from 'assets/img/Logo-transparent.png';
 
 const LogoBox = styled.div`
-  height: 3rem;
+  height: 2.5rem;
   width: 4rem;
   background-image: url(${LogoPath});
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
 `;

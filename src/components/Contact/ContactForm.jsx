@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import { useMediaQuery } from 'helpers/hooks';
 import { theme } from 'helpers/constants';
 import Button from 'components/common/Button';
-import Typography from '../common/Typography';
+import Typography from 'components/common/Typography';
 import sendEmail from 'helpers/mailer';
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 
 const FormContainer = styled.form`
-  width: ${props => props.isMobileView ? '100%' : '60%'};
+  width: ${props => (props.isMobileView ? '100%' : '60%')};
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -21,7 +21,7 @@ const FormContainer = styled.form`
     align-items: center;
     flex-wrap: wrap;
     & > input {
-      width: ${props => props.isMobileView ? '100%' : '48%'};
+      width: ${props => (props.isMobileView ? '100%' : '48%')};
       padding: 1rem;
       margin: 1%;
     }
@@ -45,9 +45,9 @@ const ContactForm = () => {
 
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     const body = `
-      Visitor Name: ${data.name + ' ' + data.surname}<br />
+      Visitor Name: ${data.name} ${data.surname}<br />
       ${data.body}<br />
     `;
     // uncomment on deploy
@@ -71,7 +71,7 @@ const ContactForm = () => {
           color="secondary"
           bgColor="tertiary"
           style={{
-            width: '98%'
+            width: '98%',
           }}
           type="submit"
         />
@@ -81,7 +81,7 @@ const ContactForm = () => {
           text="ahmed.mahfoudh1991@gmail.com"
           size="small"
           style={{
-            marginRight: '1rem'
+            marginRight: '1rem',
           }}
         />
         <SocialLinks color="primary" />

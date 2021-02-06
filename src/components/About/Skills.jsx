@@ -1,5 +1,5 @@
 import React from 'react';
-import { SKILLS as skills } from 'helpers/constants';
+import { SKILLS as skills, theme } from 'helpers/constants';
 import styled from 'styled-components';
 import Section from './Section';
 
@@ -8,6 +8,7 @@ const SkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  background-color: ${theme.colors.secondary};
 `;
 
 const SkillContainer = styled.div`

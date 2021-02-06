@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -7,14 +7,16 @@ const PopupContainer = styled.div`
   z-index: 1500;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
   width: 100%;
   min-width: 270px;
   top: 0;
   left: 0;
-  overflow: scroll;
   background-color: rgba(100,90,10,.6);
+  overflow-y: scroll;
 `;
 
 const PopUpDialog = ({ onClose, children, style = {} }) => {
@@ -23,6 +25,20 @@ const PopUpDialog = ({ onClose, children, style = {} }) => {
       onClose();
     }
   };
+
+  const handleKeyPress = e => {
+    if (e.keyCode === 27) onClose();
+  };
+
+  useEffect(() => {
+    const rootElement = document.querySelector('body');
+    window.addEventListener('keydown', handleKeyPress);
+    rootElement.classList.add('stop-scrolling');
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+      rootElement.classList.remove('stop-scrolling');
+    };
+  });
 
   return (
     <PopupContainer
@@ -43,4 +59,4 @@ PopUpDialog.propTypes = {
   children: PropTypes.object.isRequired,
 };
 
-export default PopUpDialog;
+export default memo(PopUpDialog);

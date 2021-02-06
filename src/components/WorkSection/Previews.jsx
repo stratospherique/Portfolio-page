@@ -13,13 +13,14 @@ const PreviewsContainer = styled.div`
 
 const Pic = styled.div`
   background-image: url(${props => props.link});
-  background-size: 100% 100%;
-  background-postion: center center;
+  background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;
   flex-grow: 1;
+  max-width: 6rem;
   height: 4rem;
-  border: 1px solid ${props => (props.active ? theme.colors.primary : 'transparent')};
- 
+  border: 1px solid ${props => (props.active ? theme.colors.primary : theme.colors.fourth)};
+  border-radius: 4px 0 4px 0;
   margin: 0 .5em;
   cursor: pointer;
   user-select: none;
