@@ -33,6 +33,10 @@
     "arrow-parens": [
       "error",
       "as-needed"
-    ]
+    ],
+    "react/forbid-prop-types": "off",
+    "no-alert": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "no-sequences": "off"
   }
 }

@@ -49,34 +49,3 @@ table {
 	border-spacing: 0;
 }
 
-*,
-*::after,
-*::before {
-	box-sizing: border-box;
-}
-
-#root {
-	display: grid;
-	width: 100vw;
-	height: 100vh;
-	align-items: stretch;
-	justify-items: stretch;
-}
-
-body {
-	font-size: 16px;
-	font-family: 'Tomorrow', sans-serif;
-	@media screen and (max-width: 1000px and min-width: 701px) {
-		font-size: 14px;
-	}
-
-	@media screen and (max-width: 700px and min-width: 300px) {
-		font-size: 12px;
-	}
-
-	@media screen and (max-width: 299px) {
-		font-size: 10px;
-	}
-}
-
-
